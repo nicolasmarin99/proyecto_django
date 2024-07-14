@@ -1,0 +1,22 @@
+/* Ejemplo de estilos para el formulario de inicio de sesión */
+.formulario {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form button {
+    margin-top: 10px;
+}

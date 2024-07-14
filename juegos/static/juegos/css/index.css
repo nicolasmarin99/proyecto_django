@@ -1,0 +1,57 @@
+body {
+    background-image: url(../img/fondo\ wallpaper.jpg);
+}
+
+header {
+    background-color: brown;
+}
+
+header:hover {
+    background-color: rgb(187, 168, 24);
+    cursor: pointer;
+    transition: .2s ease-in;
+}
+
+.menu-superior li:hover {
+    color: black;
+}
+
+.menu-superior ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.menu-superior li {
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+
+
+.icon {
+    margin-left: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card {
+    text-align: center;
+}
+
+.card img {
+    height: 350px;
+}
+
+@media (max-width: 575px) {
+    .menu-superior ul {
+        text-align: center;
+        display: block;
+    }
+}
