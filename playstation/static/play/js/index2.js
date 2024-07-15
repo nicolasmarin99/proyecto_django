@@ -1,9 +1,15 @@
-// index2.js
-
 import { enviarDatos } from "./operaciones.js";
 
 // Función para agregar un juego al carrito
 function agregarAlCarrito(nombre, precio, imagen, descripcion, cantidad) {
+    // Verifica si el usuario está autenticado
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    if (!isLoggedIn) {
+        alert("Para añadir juegos al carrito, debes iniciar sesión.");
+        return;
+    }
+
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carrito.push({ nombre, precio, imagen, descripcion, cantidad });
     localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -16,7 +22,7 @@ const obtenerJuegos = async () => {
         const data = await response.json();
         return data.juegos;
     } catch (error) {
-        console.log(`el error es: ${error}`);
+        console.log(`El error es: ${error}`);
     }
 }
 
@@ -48,17 +54,17 @@ const crearTarjetas = (juegosArray) => {
         subTitulo.classList.add("card-text");
         subTitulo.textContent = precio;
 
-        const btnMostrar = document.createElement("button")
+        const btnMostrar = document.createElement("button");
         btnMostrar.classList.add("btn", "btn-danger");
-        btnMostrar.textContent = "mostrar detalles";
+        btnMostrar.textContent = "Mostrar detalles";
         btnMostrar.addEventListener("click", () => {
             localStorage.setItem('detalleJuego', JSON.stringify({ name, precio, imagen, descripcion, cantidad }));
             window.location.href = '/playstation/juego/';
         });
 
-        const btnComprar = document.createElement("button")
+        const btnComprar = document.createElement("button");
         btnComprar.classList.add("btn", "btn-danger");
-        btnComprar.textContent = "añadir al carrito";
+        btnComprar.textContent = "Añadir al carrito";
         btnComprar.style.marginTop = "2rem";
         btnComprar.addEventListener("click", () => {
             agregarAlCarrito(name, precio, imagen, descripcion, cantidad);

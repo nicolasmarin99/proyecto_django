@@ -10,3 +10,7 @@ def playstation(request):
 def juego_detalle(request):
     # Aquí podrías obtener datos del juego desde la base de datos si es necesario
     return render(request, 'playstation/juego.html')
+
+
+def carrito_view(request):
+    return render(request, 'playstation/carrito.html')

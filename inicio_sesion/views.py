@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.contrib.auth.views import LoginView
 
 
 def login_view(request):
@@ -25,3 +26,18 @@ def login_view(request):
 def redirect_to_register(request):
     # Redirige a la vista de registro en la app 'usuarios'
     return redirect('register')
+
+
+class CustomLoginView(LoginView):
+    template_name = 'inicio_sesion/login.html'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Inicio de sesión exitoso.')
+        return response
+
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        messages.error(
+            self.request, 'Datos incorrectos. Por favor, intente nuevamente.')
+        return response

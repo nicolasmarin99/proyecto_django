@@ -7,6 +7,7 @@
     <title>Document</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'inicio-sesion/css/inicio_sesion.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -16,11 +17,25 @@
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Iniciar Sesión</button>
-            <button type="submit"><a href="{% url 'index' %}" class="btn-sin-iniciar-sesion">Ingresar sin iniciar
-                    sesión</a> </button>
+            <button type="button"><a href="{% url 'index' %}" class="btn-sin-iniciar-sesion">Ingresar sin iniciar
+                    sesión</a></button>
         </form>
         <a href="{% url 'register' %}">No tengo cuenta. Regístrate aquí.</a>
     </div>
+
+    {% if messages %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            {% for message in messages %}
+            Swal.fire({
+                icon: '{{ message.tags }}',
+                title: '{{ message.message }}',
+                showConfirmButton: true
+            });
+            {% endfor %}
+        });
+    </script>
+    {% endif %}
 </body>
 
 </html>
