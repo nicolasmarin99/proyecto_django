@@ -1,0 +1,75 @@
+body {
+    background-image: url(../img/backgraund\ pstation.jpg);
+}
+
+header {
+    background-color: rgb(20, 54, 223);
+}
+
+header:hover {
+    background-color: rgb(187, 168, 24);
+    cursor: pointer;
+    transition: .2s ease-in;
+}
+
+.menu-superior li:hover {
+    color: black;
+}
+
+.menu-superior ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.menu-superior li {
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.icon {
+    margin-left: 10px;
+}
+
+.search {
+    background-image: url(../img/bannerpstation.jpg);
+    background-size: contain;
+    padding: 30px;
+    color: white;
+}
+
+label {
+    background-color: black;
+}
+
+.collapse ul {
+    color: white;
+}
+
+.slide {
+    max-width: 80%;
+    max-height: 80%;
+    margin: 0 auto;
+}
+
+footer {
+    color: white;
+    margin-top: 50px;
+}
+
+.card {
+    margin-top: 30px;
+    text-align: center;
+
+}
+
+
+
+@media (max-width: 575px) {
+    .menu-superior ul {
+        text-align: center;
+        display: block;
+    }
+}
