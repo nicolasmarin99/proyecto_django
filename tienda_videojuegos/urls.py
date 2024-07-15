@@ -22,4 +22,5 @@ urlpatterns = [
     path('juegos/', include('juegos.urls')),
     path('usuarios/', include('usuarios.urls')),
     path('inicio_sesion/', include('inicio_sesion.urls')),
+    path('playstation/', include('playstation.urls')),
 ]

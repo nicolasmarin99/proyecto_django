@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'juegos',
     'usuarios',
     'inicio_sesion',
+    'playstation',
 ]
 
 MIDDLEWARE = [
