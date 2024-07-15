@@ -9,7 +9,6 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            # Cambia 'home' por la vista a la que quieras redirigir
             return redirect('index')
     else:
         form = CustomUserCreationForm()

@@ -11,9 +11,37 @@
 
 <body>
     <header>
-        <h1>Carrito de Compras</h1>
+
+        <div class="menu-superior">
+            <ul>
+                <li>contactos</li>
+                <li>los mejores juegos</li>
+                <li>redes sociales <img class="icon" src="{% static 'play/img/facebook.svg' %}" alt="">
+                    <img class="icon" src="{% static 'play/img/instagram (2).svg'%}" alt="">
+                    <img class="icon" src="{% static 'play/img/whatsapp (2).svg'%}" alt="">
+                </li>
+            </ul>
+
+        </div>
     </header>
+
+    <div class="search">
+
+        <div class="col-XS-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <label for="exampleDataList" class="form-label">BUSQUE SU JUEGO AQUI!</label>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="buscar...">
+        </div>
+
+    </div>
+
+
+    <div class="container mt-3">
+        <button type="submit"> <a href="{% url 'playstation' %}" class="btn btn-primary">Volver a la página
+                principal</a></button>
+    </div>
+
     <main>
+        <h3>Tu carrito de compra</h3>
         <ul id="carrito"></ul>
     </main>
     <script src="{% static 'play/js/carrito.js' %}"></script>
