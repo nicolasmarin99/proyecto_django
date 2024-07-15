@@ -6,20 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del Juego</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'playstation/css/play.css' %}">
+    <link rel="stylesheet" href="{% static 'play/css/detalle.css' %}">
     <script src="{% static 'play/js/juego.js' %}" defer></script>
 </head>
 
 <body>
+
     <header>
-        <h1>Detalles del Juego</h1>
+        <div class="menu-superior">
+            <ul>
+                <li>contactos</li>
+                <li>los mejores juegos</li>
+                <li>redes sociales <img class="icon" src="{% static 'play/img/facebook.svg' %}" alt="">
+                    <img class="icon" src="{% static 'play/img/instagram (2).svg'%}" alt="">
+                    <img class="icon" src="{% static 'play/img/whatsapp (2).svg'%}" alt="">
+                </li>
+            </ul>
+
+        </div>
+
     </header>
+
+
+
     <div id="gameDetails">
         <img id="imagePage" src="" alt="Imagen del Juego">
         <h2 id="titlePage"></h2>
         <p id="precioPage"></p>
         <p id="descPage"></p>
         <p id="cantPage"></p>
+    </div>
+
+    <div class="container mt-3">
+        <button type="submit"> <a href="{% url 'playstation' %}" class="btn btn-primary">Volver a la página
+                principal</a></button>
     </div>
 </body>
 
