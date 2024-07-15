@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Juego</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'playstation/css/play.css' %}">
+    <script src="{% static 'play/js/juego.js' %}" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Detalles del Juego</h1>
+    </header>
+    <div id="gameDetails">
+        <img id="imagePage" src="" alt="Imagen del Juego">
+        <h2 id="titlePage"></h2>
+        <p id="precioPage"></p>
+        <p id="descPage"></p>
+        <p id="cantPage"></p>
+    </div>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 export const enviarDatos = (name, precio, imagen, descripcion, cantidad) => {
-    const rutaArchivoHtml = '../juego.html'
+    const rutaArchivoHtml = 'playstation/templates/playstation/juego.html'
 
     fetch(rutaArchivoHtml)
         .then(response => response.text())
@@ -29,4 +29,16 @@ export const enviarDatos = (name, precio, imagen, descripcion, cantidad) => {
         .catch((error) => {
             console.error(`error al cargar los datos: ${error}`)
         })
+}
+
+export const mostrarDetallesJuego = () => {
+    const juego = JSON.parse(localStorage.getItem('detalleJuego'));
+
+    if (juego) {
+        document.getElementById('imagePage').src = juego.imagen;
+        document.getElementById('titlePage').textContent = juego.name;
+        document.getElementById('precioPage').textContent = juego.precio;
+        document.getElementById('descPage').textContent = juego.descripcion;
+        document.getElementById('cantPage').textContent = juego.cantidad;
+    }
 }

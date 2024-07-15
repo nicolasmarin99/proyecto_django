@@ -1,15 +1,11 @@
 // index2.js
+
 import { enviarDatos } from "./operaciones.js";
 
 // Función para agregar un juego al carrito
 function agregarAlCarrito(nombre, precio, imagen, descripcion, cantidad) {
-    // Obtener el carrito del almacenamiento local o inicializar uno vacío
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    // Agregar el juego al carrito
     carrito.push({ nombre, precio, imagen, descripcion, cantidad });
-
-    // Guardar el carrito actualizado en el almacenamiento local
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
@@ -18,12 +14,11 @@ const obtenerJuegos = async () => {
     try {
         const response = await fetch("https://listo-para-subir-api-videojuegos.onrender.com/juegos");
         const data = await response.json();
-        return data.juegos; // Devolver solo el array de juegos
+        return data.juegos;
     } catch (error) {
         console.log(`el error es: ${error}`);
     }
 }
-
 
 // Función para crear las tarjetas de los juegos
 const crearTarjetas = (juegosArray) => {
@@ -33,13 +28,7 @@ const crearTarjetas = (juegosArray) => {
         const { name, precio, img: imagen, descripcion, cantidad } = juego;
 
         const divRow = document.createElement("div");
-        divRow.classList.add("col-xl-3");
-        divRow.classList.add("col-lg-3");
-        divRow.classList.add("col-md-3");
-        divRow.classList.add("col-sm-12");
-        divRow.classList.add("col-xs-12");
-        divRow.classList.add("mt-2");
-        divRow.classList.add("mb-2");
+        divRow.classList.add("col-xl-3", "col-lg-3", "col-md-3", "col-sm-12", "col-xs-12", "mt-2", "mb-2");
 
         const card = document.createElement("div");
         card.classList.add("card");
@@ -60,36 +49,31 @@ const crearTarjetas = (juegosArray) => {
         subTitulo.textContent = precio;
 
         const btnMostrar = document.createElement("button")
-        btnMostrar.classList.add("btn");
-        btnMostrar.classList.add("btn-danger");
+        btnMostrar.classList.add("btn", "btn-danger");
         btnMostrar.textContent = "mostrar detalles";
         btnMostrar.addEventListener("click", () => {
-            enviarDatos(name, precio, imagen, descripcion, cantidad);
-        })
+            localStorage.setItem('detalleJuego', JSON.stringify({ name, precio, imagen, descripcion, cantidad }));
+            window.location.href = '/playstation/juego/';
+        });
 
         const btnComprar = document.createElement("button")
-        btnComprar.classList.add("btn");
-        btnComprar.classList.add("btn-danger");
+        btnComprar.classList.add("btn", "btn-danger");
         btnComprar.textContent = "añadir al carrito";
-        btnComprar.style.marginTop = "2rem"
+        btnComprar.style.marginTop = "2rem";
         btnComprar.addEventListener("click", () => {
-            agregarAlCarrito(name, precio, imagen);
+            agregarAlCarrito(name, precio, imagen, descripcion, cantidad);
         });
 
         divRow.appendChild(card);
-
         card.appendChild(img);
         card.appendChild(divBody);
-
         divBody.appendChild(titulo);
         divBody.appendChild(subTitulo);
         divBody.appendChild(btnMostrar);
         divBody.appendChild(btnComprar);
-
         juegoRow.appendChild(divRow);
-    })
+    });
 }
-
 
 // Llamar a la función para obtener y crear las tarjetas
 obtenerJuegos()
